@@ -1,0 +1,119 @@
+/* Container styling */
+.header-container {
+    position: fixed;       /* Fixes the header at the top */
+    top: 0;                /* Aligns it to the top of the viewport */
+    left: 0;               /* Aligns it to the left */
+    right: 0;              /* Stretches it to the right */
+    display: flex;         /* Ensures elements are side by side */
+    justify-content: space-between; /* Spaces out title and button */
+    align-items: center;   /* Vertically centers the items */
+    background-color: white; /* Background color to avoid content overlap */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    z-index: 1000;         /* Ensures it stays above other elements */
+    /* margin: 0 8rem 1rem; */
+    padding: 0 3rem;
+}
+.container {
+    width: 90%;
+    margin: 100px auto;
+    overflow: visible; /* Allow overflow for scaling */
+    border-radius: 12px; /* Rounded corners for the container */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    overflow: visible; /* Allow rows to overflow */
+    border-radius: 12px !important; /* Rounded corners for the table */
+    border-collapse: collapse; /* Ensure borders collapse together */
+}
+
+/* Table Headers */
+th {
+    background: #f4f7fc;
+    color: #333333;
+    font-weight: bold;
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+    white-space: nowrap; /* Prevent header wrapping */
+    position: sticky; /* Keeps headers frozen */
+    top: 0; /* Stick to the top */
+    z-index: 20; /* Ensure headers are above rows */
+}
+
+/* Table Row */
+tr {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    z-index: 0; /* Ensure hover effects stay below headers */
+}
+
+/* Table Cells */
+td {
+    padding: 1rem;
+    color: #4a4a4a;
+    border: 1px solid #e0e0e0;
+    word-wrap: break-word; /* Allow long text wrapping */
+    white-space: normal; /* Allow content to wrap */
+    transition: inherit; /* Inherit hover transitions */
+}
+
+/* Hover Effect: Enlarge Row */
+tr:hover {
+    transform: scale(1.05); /* Enlarges the entire row */
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    z-index: 10; /* Bring the row above others */
+}
+
+/* Ensure cells scale smoothly */
+tr:hover td {
+    background: #ffffff; /* Ensure consistency */
+}
+
+.no-hover {
+    pointer-events: none;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+
+    table {
+        display: block; /* Allow horizontal scroll on small screens */
+        overflow-x: auto;
+    }
+
+    th, td {
+        padding: 0.8rem;
+    }
+
+    /* Subtle hover effect for small screens */
+    tr:hover {
+        transform: scale(1.05);
+    }
+}
+
+/* Button styling */
+.new-report-btn {
+    padding: 0.8rem 1.5rem;
+    background: #036c5f !important;
+    color: white !important;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.new-report-btn:hover {
+    background: #025043 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
+}

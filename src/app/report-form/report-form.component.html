@@ -1,0 +1,58 @@
+<main>
+    <div class="header-container">
+        <h2>Add New Request</h2>
+        <button class="new-report-btn" mat-raised-button color="accent" [routerLink]="['/report']">
+            View Report
+        </button>
+    </div>
+
+    <div class="container">
+        <form class="request-form" [formGroup]="requestForm" (ngSubmit)="submitForm()">
+
+            <div class="flex">
+                <div class="flex-col">
+                    <label for="req_id">Req ID:</label>
+                    <input id="req_id" formControlName="req_id" required>
+                </div>
+
+                <div class="flex-col">
+                    <label for="project">Project:</label>
+                    <select id="project" formControlName="project" required>
+                        <option *ngFor="let project of project" [value]="project">{{ project }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex">
+                <div class="flex-col">
+                    <label for="location">Location:</label>
+                    <select id="location" formControlName="location" required>
+                        <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
+                    </select>
+                </div>
+
+                <div class="flex-col">
+                    <label for="client_manager">Name:</label>
+                    <input id="client_manager" formControlName="client_manager" required>
+                </div>
+            </div>
+
+            <div class="flex">
+                <div class="flex-col">
+                    <label for="tech_stack">Tech Stack:</label>
+                    <input id="tech_stack" formControlName="tech_stack" required>
+                </div>
+
+                <div class="flex-col">
+                    <label for="position">Position:</label>
+                    <input id="position" formControlName="position" required>
+                </div>
+            </div>
+
+            <label for="current_status">Status:</label>
+            <textarea rows="3" id="current_status" formControlName="current_status" required></textarea>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</main>
