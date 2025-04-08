@@ -1,59 +1,56 @@
-# ReqApp
+## 📋 FormFlow - Angular + Spring Boot + MongoDB Full Stack App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+A full-stack CRUD application where users can input data through a form, store it in a MongoDB database, and view detailed reports. The app is built using **Angular** for the frontend, **Spring Boot** for the backend, and **MongoDB** for data storage. Fully deployed using **Vercel** (frontend) and **Render** (backend).
 
-## Development server
+**👉 [Live Demo](https://form-report-client.vercel.app/report/new)** – *Visit Now!*
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+### 🖥️ Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+**Frontend:**  
+`Angular`
 
-## Code scaffolding
+**Backend:**  
+`Spring Boot` `Java` `REST APIs`
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+**Database:**  
+`MongoDB`
 
-```bash
-ng generate component component-name
-```
+**Deployment:**  
+- Frontend: [Vercel](https://vercel.com/)  
+- Backend: [Render](https://render.com/)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+### 🚀 Features
 
-## Building
+#### 📄 Form & Data Input
+- Clean and validated form UI
+- Dynamic input fields with real-time validation
 
-To build the project run:
+#### 🧮 CRUD Operations
+- Create, Read, Update, Delete functionality
+- Real-time data updates on frontend
+- Easy-to-use UI for managing entries
 
-```bash
-ng build
-```
+#### 📊 Report Generation
+- View stored data in structured reports
+- Filter, search, and paginate entries
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+#### ☁️ Deployment
+- Optimized build deployed on Vercel (frontend)
+- Scalable Spring Boot backend hosted on Render
+- Environment variable-based secure config
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
-```bash
-ng test
-```
 
-## Running end-to-end tests
+### 📬 Contact
 
-For end-to-end (e2e) testing, run:
+Feel free to connect with me:  
+[LinkedIn](www.linkedin.com/in/shetty-sakshi) | [Email](shettysakshi2002@gmail.com) 
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
