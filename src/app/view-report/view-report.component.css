@@ -77,6 +77,11 @@ tr:hover td {
     pointer-events: none;
 }
 
+@media (max-width: 450px) {
+    .header-container {
+        padding: 0 1rem;
+    }
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {

@@ -1,17 +1,28 @@
 main {
     background-color: #dadde073 !important;
 }
+
 .header-container {
-    position: fixed;       /* Fixes the header at the top */
-    top: 0;                /* Aligns it to the top of the viewport */
-    left: 0;               /* Aligns it to the left */
-    right: 0;              /* Stretches it to the right */
-    display: flex;         /* Ensures elements are side by side */
-    justify-content: space-between; /* Spaces out title and button */
-    align-items: center;   /* Vertically centers the items */
-    background-color: white; /* Background color to avoid content overlap */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
-    z-index: 1000;         /* Ensures it stays above other elements */
+    position: fixed;
+    /* Fixes the header at the top */
+    top: 0;
+    /* Aligns it to the top of the viewport */
+    left: 0;
+    /* Aligns it to the left */
+    right: 0;
+    /* Stretches it to the right */
+    display: flex;
+    /* Ensures elements are side by side */
+    justify-content: space-between;
+    /* Spaces out title and button */
+    align-items: center;
+    /* Vertically centers the items */
+    background-color: white;
+    /* Background color to avoid content overlap */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Optional shadow for depth */
+    z-index: 1000;
+    /* Ensures it stays above other elements */
     /* margin: 0 8rem 1rem; */
     padding: 0 3rem;
 }
@@ -62,7 +73,9 @@ label {
     color: #333;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid #ccc;
@@ -97,7 +110,7 @@ input:focus {
     background-color: #025043 !important;
 }
 
-.flex{
+.flex {
     display: flex;
     gap: 4rem;
 }
@@ -109,27 +122,53 @@ input:focus {
     gap: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 450px) {
     .header-container {
-        flex-direction: column;
-        gap: 1rem;
-        margin: 1rem;
+        padding: 0 1rem;
     }
 
     .container {
-        width: 95%;
-        padding: 1.5rem;
+        width: 80%;
     }
 
-    h2 {
-        font-size: 1.5rem;
+    select {
+        width: 110% !important;
     }
 
-    .new-report-btn {
-        width: 100%;
+    textarea {
+        width: 90% !important;
     }
 
-    .submit-btn {
-        width: 100%;
+    .flex {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
+
+    .flex-col {
+        width: 90%;
+    }
+}
+
+@media (max-width: 560px) {
+    .container {
+        width: 80%;
+    }
+
+    select {
+        width: 115%;
+    }
+
+}
+@media (max-width: 768px) {
+    select {
+        width: 108%;
+    }
+
+}
+@media (max-width: 1080px) {
+    select {
+        width: 105%;
+    }
+
 }
