@@ -44,9 +44,20 @@ A full-stack CRUD application where users can input data through a form, store i
 - Environment variable-based secure config
 
 ---
+## 🔗 Backend Integration
+
+This project is powered by a separate backend:
+
+**GitHub Repo**: [form-report-server](https://github.com/sakshishetty632/form-report-server)
+
+Make sure to:
+
+1. Clone the server repo:
+   ```bash
+   git clone https://github.com/sakshishetty632/form-report-server.git
 
 
-
+---
 ### 📬 Contact
 
 Feel free to connect with me:  
