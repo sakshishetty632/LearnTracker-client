@@ -11,12 +11,12 @@
 
             <div class="flex">
                 <div class="flex-col">
-                    <label for="req_id">Req ID:</label>
+                    <label for="req_id">Student ID:</label>
                     <input id="req_id" formControlName="req_id" required>
                 </div>
 
                 <div class="flex-col">
-                    <label for="project">Project:</label>
+                    <label for="project">Course:</label>
                     <select id="project" formControlName="project" required>
                         <option *ngFor="let project of project" [value]="project">{{ project }}</option>
                     </select>
@@ -25,31 +25,31 @@
 
             <div class="flex">
                 <div class="flex-col">
-                    <label for="location">Location:</label>
+                    <label for="location">Branch:</label>
                     <select id="location" formControlName="location" required>
                         <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
                     </select>
                 </div>
 
                 <div class="flex-col">
-                    <label for="client_manager">Name:</label>
+                    <label for="client_manager">Student Name:</label>
                     <input id="client_manager" formControlName="client_manager" required>
                 </div>
             </div>
 
             <div class="flex">
                 <div class="flex-col">
-                    <label for="tech_stack">Tech Stack:</label>
+                    <label for="tech_stack">Learning Modules:</label>
                     <input id="tech_stack" formControlName="tech_stack" required>
                 </div>
 
                 <div class="flex-col">
-                    <label for="position">Position:</label>
+                    <label for="position">Grade:</label>
                     <input id="position" formControlName="position" required>
                 </div>
             </div>
 
-            <label for="current_status">Status:</label>
+            <label for="current_status">Performance Note:</label>
             <textarea rows="3" id="current_status" formControlName="current_status" required></textarea>
 
             <button type="submit" class="submit-btn">Submit</button>

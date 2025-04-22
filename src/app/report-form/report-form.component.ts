@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { ApiService } from '../api.service';
 
@@ -19,35 +19,287 @@ export class ReportFormComponent implements OnInit {
 
   // Dropdown Data
   locations: string[] = [
-    'Mumbai',
-    'Thane',
-    'Pune',
-    'Nashik',
-    'Nagpur',
-    'Aurangabad',
-    'Solapur',
-    'Kolhapur',
-    'Amravati',
-    'Satara',
-    'Sangli'
+    "Bachelor of Arts (BA)",
+    "Bachelor of Fine Arts (BFA)",
+    "Bachelor of Design (BDes)",
+    "Bachelor of Journalism & Mass Communication (BJMC)",
+    "Bachelor of Hotel Management (BHM)",
+    "Bachelor of Fashion Design",
+    "Bachelor of Performing Arts",
+    "Bachelor of Commerce (BCom)",
+    "Bachelor of Business Administration (BBA)",
+    "Bachelor of Business Management (BBM)",
+    "Bachelor of Computer Applications (BCA)",
+    "Bachelor of Accounting & Finance (BAF)",
+    "Bachelor of Financial Markets (BFM)",
+    "Bachelor of Science (BSc) - Physics, Chemistry, Mathematics",
+    "Bachelor of Science (BSc) - Biology, Botany, Zoology",
+    "Bachelor of Science (BSc) - Biotechnology, Microbiology, Environmental Science",
+    "Bachelor of Science (BSc) - Computer Science",
+    "Bachelor of Pharmacy (BPharm)",
+    "Bachelor of Medical Laboratory Technology (BMLT)",
+    "Bachelor of Technology (BTech)",
+    "Bachelor of Engineering (BEng)",
+    "Bachelor of Computer Engineering",
+    "Bachelor of Civil Engineering",
+    "Bachelor of Mechanical Engineering",
+    "Bachelor of Laws (LLB)",
+    "Integrated 5-year LLB programs",
+    "Bachelor of Education (BEd)",
+    "Bachelor of Physical Education (BPEd)",
+    "Bachelor of Medicine, Bachelor of Surgery (MBBS)",
+    "Bachelor of Dental Surgery (BDS)",
+    "Bachelor of Physiotherapy (BPT)",
+    "Bachelor of Nursing (BSc Nursing)",
+    "Bachelor of Audiology & Speech-Language Pathology (BASLP)",
+    "Bachelor of Agriculture (BSc Agriculture)",
+    "Bachelor of Horticulture",
+    "Bachelor of Interior Design",
+    "Bachelor of Product Design"
   ];
 
-  project: string[] = [
-    'Project 1',
-    'Project 2',
-    'Project 3',
-    'Project 4',
-    'Project 5',
-    'Project 6',
-    'Project 7'
-  ];
+  project: { [key: string]: string[] } = {
+    "Bachelor of Arts (BA)": [
+      "English Literature",
+      "History",
+      "Psychology",
+      "Political Science",
+      "Sociology",
+      "Philosophy",
+      "Economics",
+      "Geography",
+      "Ancient History"
+    ],
+    "Bachelor of Fine Arts (BFA)": [
+      "Painting",
+      "Sculpture",
+      "Applied Arts",
+      "Photography",
+      "Printmaking",
+      "Animation"
+    ],
+    "Bachelor of Design (BDes)": [
+      "Fashion Design",
+      "Product Design",
+      "Interior Design",
+      "Graphic Design",
+      "Textile Design",
+      "Communication Design"
+    ],
+    "Bachelor of Journalism & Mass Communication (BJMC)": [
+      "Journalism",
+      "Broadcast Journalism",
+      "Public Relations",
+      "Advertising",
+      "Media Studies"
+    ],
+    "Bachelor of Hotel Management (BHM)": [
+      "Food Production",
+      "Hotel Operations",
+      "Housekeeping",
+      "Front Office Management",
+      "Event Management"
+    ],
+    "Bachelor of Fashion Design": [
+      "Textile Design",
+      "Fashion Merchandising",
+      "Garment Production",
+      "Fashion Illustration"
+    ],
+    "Bachelor of Performing Arts": [
+      "Dance",
+      "Music",
+      "Theater",
+      "Film Acting"
+    ],
+    "Bachelor of Commerce (BCom)": [
+      "General Commerce",
+      "Accounting",
+      "Business Studies",
+      "Taxation",
+      "Auditing"
+    ],
+    "Bachelor of Business Administration (BBA)": [
+      "Business Management",
+      "Entrepreneurship",
+      "International Business",
+      "Human Resource Management"
+    ],
+    "Bachelor of Business Management (BBM)": [
+      "Business Strategy",
+      "Organizational Behavior",
+      "Marketing Management",
+      "Business Ethics"
+    ],
+    "Bachelor of Computer Applications (BCA)": [
+      "Computer Programming",
+      "Web Development",
+      "Software Engineering",
+      "Database Management"
+    ],
+    "Bachelor of Accounting & Finance (BAF)": [
+      "Financial Accounting",
+      "Management Accounting",
+      "Cost Accounting",
+      "Financial Management"
+    ],
+    "Bachelor of Financial Markets (BFM)": [
+      "Capital Markets",
+      "Investment Management",
+      "Derivatives",
+      "Risk Management"
+    ],
+    "Bachelor of Science (BSc) - Physics, Chemistry, Mathematics": [
+      "Astrophysics",
+      "Applied Mathematics",
+      "Physical Chemistry",
+      "Inorganic Chemistry"
+    ],
+    "Bachelor of Science (BSc) - Biology, Botany, Zoology": [
+      "Plant Science",
+      "Animal Science",
+      "Ecology",
+      "Environmental Biology"
+    ],
+    "Bachelor of Science (BSc) - Biotechnology, Microbiology, Environmental Science": [
+      "Genetics",
+      "Biochemistry",
+      "Microbial Biotechnology",
+      "Environmental Management"
+    ],
+    "Bachelor of Science (BSc) - Computer Science": [
+      "Algorithms",
+      "Data Structures",
+      "Artificial Intelligence",
+      "Cyber Security"
+    ],
+    "Bachelor of Pharmacy (BPharm)": [
+      "Pharmacology",
+      "Pharmaceutical Chemistry",
+      "Pharmaceutical Analysis",
+      "Pharmacognosy"
+    ],
+    "Bachelor of Medical Laboratory Technology (BMLT)": [
+      "Clinical Pathology",
+      "Hematology",
+      "Microbiology",
+      "Biochemistry"
+    ],
+    "Bachelor of Technology (BTech)": [
+      "Computer Science",
+      "Mechanical Engineering",
+      "Civil Engineering",
+      "Electrical Engineering"
+    ],
+    "Bachelor of Engineering (BEng)": [
+      "Chemical Engineering",
+      "Information Technology",
+      "Biotechnology Engineering",
+      "Aeronautical Engineering"
+    ],
+    "Bachelor of Computer Engineering": [
+      "Software Engineering",
+      "Database Systems",
+      "Artificial Intelligence",
+      "Networking"
+    ],
+    "Bachelor of Civil Engineering": [
+      "Structural Engineering",
+      "Surveying",
+      "Construction Management",
+      "Hydraulics"
+    ],
+    "Bachelor of Mechanical Engineering": [
+      "Thermodynamics",
+      "Manufacturing Process",
+      "Machine Design",
+      "Fluid Mechanics"
+    ],
+    "Bachelor of Laws (LLB)": [
+      "Criminal Law",
+      "Corporate Law",
+      "Constitutional Law",
+      "Intellectual Property Law"
+    ],
+    "Integrated 5-year LLB programs": [
+      "Corporate Law",
+      "Family Law",
+      "International Law",
+      "Civil Law"
+    ],
+    "Bachelor of Education (BEd)": [
+      "Special Education",
+      "Elementary Education",
+      "Secondary Education",
+      "Adult Education"
+    ],
+    "Bachelor of Physical Education (BPEd)": [
+      "Sports Science",
+      "Kinesiology",
+      "Fitness Training",
+      "Coaching"
+    ],
+    "Bachelor of Medicine, Bachelor of Surgery (MBBS)": [
+      "General Medicine",
+      "Surgery",
+      "Pediatrics",
+      "Orthopedics"
+    ],
+    "Bachelor of Dental Surgery (BDS)": [
+      "Oral Surgery",
+      "Prosthodontics",
+      "Periodontics",
+      "Orthodontics"
+    ],
+    "Bachelor of Physiotherapy (BPT)": [
+      "Musculoskeletal Physiotherapy",
+      "Neurological Physiotherapy",
+      "Sports Physiotherapy",
+      "Cardiopulmonary Physiotherapy"
+    ],
+    "Bachelor of Nursing (BSc Nursing)": [
+      "Community Health Nursing",
+      "Medical-Surgical Nursing",
+      "Obstetrics and Gynecology Nursing",
+      "Pediatric Nursing"
+    ],
+    "Bachelor of Audiology & Speech-Language Pathology (BASLP)": [
+      "Speech Therapy",
+      "Audiology",
+      "Rehabilitation"
+    ],
+    "Bachelor of Agriculture (BSc Agriculture)": [
+      "Agronomy",
+      "Soil Science",
+      "Horticulture",
+      "Plant Pathology"
+    ],
+    "Bachelor of Horticulture": [
+      "Fruit Science",
+      "Vegetable Science",
+      "Floriculture",
+      "Landscape Architecture"
+    ],
+    "Bachelor of Interior Design": [
+      "Space Planning",
+      "Design Theory",
+      "Furniture Design",
+      "Lighting Design"
+    ],
+    "Bachelor of Product Design": [
+      "Industrial Design",
+      "Ergonomics",
+      "User Experience Design",
+      "Design Research"
+    ]
+  };
 
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Initialize Form
@@ -62,7 +314,7 @@ export class ReportFormComponent implements OnInit {
     });
 
     // Check if we are in "Edit" mode
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
       if (id) {
         this.isEditMode = true;
