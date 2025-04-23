@@ -27,9 +27,7 @@
                 <div class="flex-col">
                     <label for="project">Course:</label>
                     <select id="project" formControlName="project" required>
-                      <option *ngFor="let entry of project | keyvalue" [value]="entry.key">
-                        {{ entry.key }}: {{ entry.value }}
-                      </option>
+                        <option *ngFor="let course of filteredProjects" [value]="course">{{ course }}</option>
                     </select>
                   </div>
 

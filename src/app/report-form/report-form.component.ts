@@ -32,17 +32,14 @@ export class ReportFormComponent implements OnInit {
     "Bachelor of Computer Applications (BCA)",
     "Bachelor of Accounting & Finance (BAF)",
     "Bachelor of Financial Markets (BFM)",
-    "Bachelor of Science (BSc) - Physics, Chemistry, Mathematics",
-    "Bachelor of Science (BSc) - Biology, Botany, Zoology",
-    "Bachelor of Science (BSc) - Biotechnology, Microbiology, Environmental Science",
-    "Bachelor of Science (BSc) - Computer Science",
+    "Bachelor of Science (BSc)",
     "Bachelor of Pharmacy (BPharm)",
     "Bachelor of Medical Laboratory Technology (BMLT)",
     "Bachelor of Technology (BTech)",
     "Bachelor of Engineering (BEng)",
-    "Bachelor of Computer Engineering",
-    "Bachelor of Civil Engineering",
-    "Bachelor of Mechanical Engineering",
+    // "Bachelor of Computer Engineering",
+    // "Bachelor of Civil Engineering",
+    // "Bachelor of Mechanical Engineering",
     "Bachelor of Laws (LLB)",
     "Integrated 5-year LLB programs",
     "Bachelor of Education (BEd)",
@@ -149,25 +146,19 @@ export class ReportFormComponent implements OnInit {
       "Derivatives",
       "Risk Management"
     ],
-    "Bachelor of Science (BSc) - Physics, Chemistry, Mathematics": [
+    "Bachelor of Science (BSc)": [
       "Astrophysics",
       "Applied Mathematics",
       "Physical Chemistry",
-      "Inorganic Chemistry"
-    ],
-    "Bachelor of Science (BSc) - Biology, Botany, Zoology": [
+      "Inorganic Chemistry",
       "Plant Science",
       "Animal Science",
       "Ecology",
-      "Environmental Biology"
-    ],
-    "Bachelor of Science (BSc) - Biotechnology, Microbiology, Environmental Science": [
+      "Environmental Biology",
       "Genetics",
       "Biochemistry",
       "Microbial Biotechnology",
-      "Environmental Management"
-    ],
-    "Bachelor of Science (BSc) - Computer Science": [
+      "Environmental Management",
       "Algorithms",
       "Data Structures",
       "Artificial Intelligence",
@@ -195,25 +186,10 @@ export class ReportFormComponent implements OnInit {
       "Chemical Engineering",
       "Information Technology",
       "Biotechnology Engineering",
-      "Aeronautical Engineering"
-    ],
-    "Bachelor of Computer Engineering": [
-      "Software Engineering",
-      "Database Systems",
-      "Artificial Intelligence",
-      "Networking"
-    ],
-    "Bachelor of Civil Engineering": [
-      "Structural Engineering",
-      "Surveying",
-      "Construction Management",
-      "Hydraulics"
-    ],
-    "Bachelor of Mechanical Engineering": [
-      "Thermodynamics",
-      "Manufacturing Process",
-      "Machine Design",
-      "Fluid Mechanics"
+      "Aeronautical Engineering",
+      "Computer Engineering",
+      "Civil Engineering",
+      "Mechanical Engineering"
     ],
     "Bachelor of Laws (LLB)": [
       "Criminal Law",
@@ -293,6 +269,7 @@ export class ReportFormComponent implements OnInit {
       "Design Research"
     ]
   };
+  filteredProjects: string[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -312,8 +289,11 @@ export class ReportFormComponent implements OnInit {
       position: ['', Validators.required],
       current_status: ['', Validators.required]
     });
+    this.filteredProjects = this.project[this.locations[0]];
 
-    // Check if we are in "Edit" mode
+    this.requestForm.get('location')?.valueChanges.subscribe(location => {
+      this.onLocationChange(location);
+    });
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
       if (id) {
@@ -322,6 +302,13 @@ export class ReportFormComponent implements OnInit {
         this.loadRequestData(this.reqId);
       }
     });
+  }
+  
+  onLocationChange(location: string): void {
+    // Update the filtered projects based on the selected location
+    this.filteredProjects = this.project[location] || [];
+    // Optionally, reset the selected project if no valid project exists for the new location
+    this.requestForm.get('project')?.reset();
   }
 
   // Load request data for editing
@@ -336,7 +323,6 @@ export class ReportFormComponent implements OnInit {
       }
     });
   }
-
   // Handle Form Submission (Create or Update)
   submitForm(): void {
     if (this.requestForm.invalid) {
