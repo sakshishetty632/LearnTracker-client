@@ -48,7 +48,7 @@ A full-stack CRUD application where users can input data through a form, store i
 
 This project is powered by a separate backend:
 
-**GitHub Repo**: [form-report-server](https://github.com/sakshishetty632/LearnTracker-server)
+**GitHub Repo**: [LearnTracker-server](https://github.com/sakshishetty632/LearnTracker-server)
 
 Make sure to:
 
