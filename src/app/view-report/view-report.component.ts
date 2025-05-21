@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './view-report.component.css',
 })
 export class ViewReportComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['req_id', 'project', 'location', 'client_manager', 'tech_stack', 'position', 'current_status', 'actions'];
+  displayedColumns: string[] = ['student_id', 'course', 'branch', 'student_name', 'learning_modules', 'grade', 'performance_note', 'actions'];
   dataSource = new MatTableDataSource<any>([]);
   showReport = false;
 
@@ -48,13 +48,13 @@ export class ViewReportComponent implements OnInit, AfterViewInit {
 
   // Navigate to the edit form
   editRequest(req: any): void {
-    this.router.navigate(['/report/edit', req.req_id]);
+    this.router.navigate(['/report/edit', req.student_id]);
   }
 
   // Delete a request and refresh the table
-  deleteRequest(reqId: number): void {
+  deleteRequest(studentId: number): void {
     if (confirm('Are you sure you want to delete this report?')) {
-      this.apiService.deleteRequest(reqId).subscribe({
+      this.apiService.deleteRequest(studentId).subscribe({
         next: () => {
           alert('Report deleted successfully');
           this.viewReport(); // Refresh the table

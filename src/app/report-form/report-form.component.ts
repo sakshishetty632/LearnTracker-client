@@ -18,7 +18,7 @@ export class ReportFormComponent implements OnInit {
   reqId: string | null = null;
 
   // Dropdown Data
-  locations: string[] = [
+  branches: string[] = [
     "Bachelor of Arts (BA)",
     "Bachelor of Fine Arts (BFA)",
     "Bachelor of Design (BDes)",
@@ -55,7 +55,7 @@ export class ReportFormComponent implements OnInit {
     "Bachelor of Product Design"
   ];
 
-  project: { [key: string]: string[] } = {
+  course: { [key: string]: string[] } = {
     "Bachelor of Arts (BA)": [
       "English Literature",
       "History",
@@ -269,7 +269,7 @@ export class ReportFormComponent implements OnInit {
       "Design Research"
     ]
   };
-  filteredProjects: string[] = [];
+  filteredcourses: string[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -281,18 +281,18 @@ export class ReportFormComponent implements OnInit {
   ngOnInit(): void {
     // Initialize Form
     this.requestForm = this.fb.group({
-      req_id: ['', Validators.required],
-      project: ['', Validators.required],
-      location: ['', Validators.required],
-      client_manager: ['', Validators.required],
-      tech_stack: ['', Validators.required],
-      position: ['', Validators.required],
-      current_status: ['', Validators.required]
+      student_id: ['', Validators.required],
+      course: ['', Validators.required],
+      branch: ['', Validators.required],
+      student_name: ['', Validators.required],
+      learning_modules: ['', Validators.required],
+      grade: ['', Validators.required],
+      performance_note: ['', Validators.required]
     });
-    this.filteredProjects = this.project[this.locations[0]];
+    this.filteredcourses = this.course[this.branches[0]];
 
-    this.requestForm.get('location')?.valueChanges.subscribe(location => {
-      this.onLocationChange(location);
+    this.requestForm.get('branch')?.valueChanges.subscribe((branch: string) => {
+      this.onbranchChange(branch);
     });
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
@@ -304,17 +304,17 @@ export class ReportFormComponent implements OnInit {
     });
   }
   
-  onLocationChange(location: string): void {
-    // Update the filtered projects based on the selected location
-    this.filteredProjects = this.project[location] || [];
-    // Optionally, reset the selected project if no valid project exists for the new location
-    this.requestForm.get('project')?.reset();
+  onbranchChange(branch: string): void {
+    // Update the filtered courses based on the selected branch
+    this.filteredcourses = this.course[branch] || [];
+    // Optionally, reset the selected course if no valid course exists for the new branch
+    this.requestForm.get('course')?.reset();
   }
 
   // Load request data for editing
   loadRequestData(reqId: string): void {
     this.apiService.getRequests().subscribe((requests) => {
-      const request = requests.find(req => req.req_id === reqId);
+      const request = requests.find(req => req.student_id === reqId);
       if (request) {
         this.requestForm.patchValue(request);
       } else {

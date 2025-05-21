@@ -11,13 +11,13 @@
 
             <div class="flex">
                 <div class="flex-col">
-                    <label for="req_id">Student ID:</label>
-                    <input id="req_id" formControlName="req_id" required>
+                    <label for="student_id">Student ID:</label>
+                    <input id="student_id" formControlName="student_id" required>
                 </div>
                 <div class="flex-col">
-                    <label for="location">Branch:</label>
-                    <select id="location" formControlName="location" required>
-                        <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
+                    <label for="branch">Branch:</label>
+                    <select id="branch" formControlName="branch" required>
+                        <option *ngFor="let branch of branchs" [value]="branch">{{ branch }}</option>
                     </select>
                 </div>
                 
@@ -25,32 +25,32 @@
 
             <div class="flex">
                 <div class="flex-col">
-                    <label for="project">Course:</label>
-                    <select id="project" formControlName="project" required>
-                        <option *ngFor="let course of filteredProjects" [value]="course">{{ course }}</option>
+                    <label for="course">Course:</label>
+                    <select id="course" formControlName="course" required>
+                        <option *ngFor="let course of filteredcourses" [value]="course">{{ course }}</option>
                     </select>
                   </div>
 
                 <div class="flex-col">
                     <label for="client_manager">Student Name:</label>
-                    <input id="client_manager" formControlName="client_manager" required>
+                    <input id="client_manager" formControlName="student_name" required>
                 </div>
             </div>
 
             <div class="flex">
                 <div class="flex-col">
-                    <label for="tech_stack">Learning Modules:</label>
-                    <input id="tech_stack" formControlName="tech_stack" required>
+                    <label for="learning_modules">Learning Modules:</label>
+                    <input id="learning_modules" formControlName="learning_modules" required>
                 </div>
 
                 <div class="flex-col">
-                    <label for="position">Grade:</label>
-                    <input id="position" formControlName="position" required>
+                    <label for="grade">Grade:</label>
+                    <input id="grade" formControlName="grade" required>
                 </div>
             </div>
 
-            <label for="current_status">Performance Note:</label>
-            <textarea rows="3" id="current_status" formControlName="current_status" required></textarea>
+            <label for="performance_note">Performance Note:</label>
+            <textarea rows="3" id="performance_note" formControlName="performance_note" required></textarea>
 
             <button type="submit" class="submit-btn">Submit</button>
         </form>
