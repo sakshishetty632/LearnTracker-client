@@ -15,7 +15,7 @@ import { ApiService } from '../api.service';
 export class ReportFormComponent implements OnInit {
   requestForm!: FormGroup;
   isEditMode = false;
-  reqId: string | null = null;
+  studentId: string | null = null;
 
   // Dropdown Data
   branches: string[] = [
@@ -298,8 +298,8 @@ export class ReportFormComponent implements OnInit {
       const id = params.get('id');
       if (id) {
         this.isEditMode = true;
-        this.reqId = id;
-        this.loadRequestData(this.reqId);
+        this.studentId = id;
+        this.loadRequestData(this.studentId);
       }
     });
   }
@@ -312,9 +312,9 @@ export class ReportFormComponent implements OnInit {
   }
 
   // Load request data for editing
-  loadRequestData(reqId: string): void {
+  loadRequestData(studentId: string): void {
     this.apiService.getRequests().subscribe((requests) => {
-      const request = requests.find(req => req.student_id === reqId);
+      const request = requests.find(req => req.student_id === studentId);
       if (request) {
         this.requestForm.patchValue(request);
       } else {
@@ -330,9 +330,9 @@ export class ReportFormComponent implements OnInit {
       return;
     }
 
-    if (this.isEditMode && this.reqId !== null) {
+    if (this.isEditMode && this.studentId !== null) {
       // Update existing record
-      this.apiService.updateRequest(this.reqId, this.requestForm.value).subscribe(() => {
+      this.apiService.updateRequest(this.studentId, this.requestForm.value).subscribe(() => {
         alert('Request updated successfully');
         this.router.navigate(['/report']);
       });

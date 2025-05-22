@@ -22,12 +22,12 @@ export class ApiService {
   }
 
   // Update an existing request (PUT)
-  updateRequest(reqId: string, updatedData: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${reqId}`, updatedData);
+  updateRequest(studentId: string, updatedData: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${studentId}`, updatedData);
   }
 
   // Delete a request (DELETE)
-  deleteRequest(reqId: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${reqId}`);
+  deleteRequest(studentId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${studentId}`);
   }
 }
