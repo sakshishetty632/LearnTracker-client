@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root' // Works with standalone components
 })
 export class ApiService {
-  private baseUrl = 'https://form-report-server.onrender.com/api/reqs'; // Updated backend URL
+  private baseUrl = 'https://learntracker-server.onrender.com/api/student-progress'; // Updated backend URL
 
   constructor(private http: HttpClient) {
   }
